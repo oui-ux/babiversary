@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Happy Monthsary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Parisienne&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #f6f0ea;
+    --paper: #fffdfa;
+    --ink: #3a2f2c;
+    --ink-soft: #6b5c56;
+    --rose: #9c6b70;
+    --rose-soft: #e9d7d3;
+    --gold: #b6925f;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html, body{
+    margin:0;
+    padding:0;
+    min-height: 100vh;
+    background: var(--bg);
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(156,107,112,0.05), transparent 40%),
+      radial-gradient(circle at 85% 80%, rgba(182,146,95,0.06), transparent 45%);
+  }
+
+  body{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height: 100vh;
+    padding: 40px 18px;
+    font-family: 'EB Garamond', serif;
+    color: var(--ink);
+  }
+
+  .envelope{
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .letter{
+    position: relative;
+    background: var(--paper);
+    border-radius: 2px;
+    padding: 64px 56px 52px;
+    box-shadow:
+      0 1px 2px rgba(58,47,44,0.04),
+      0 30px 60px -20px rgba(58,47,44,0.18),
+      0 0 0 1px rgba(58,47,44,0.03);
+    opacity: 0;
+    transform: translateY(14px);
+    animation: riseIn 1s ease-out 0.5s forwards;
+  }
+
+  /* thin double rule like deckled letter paper */
+  .letter::before{
+    content:"";
+    position:absolute;
+    inset: 14px;
+    border: 1px solid rgba(156,107,112,0.15);
+    pointer-events: none;
+  }
+
+  @keyframes riseIn{
+    to{ opacity:1; transform: translateY(0); }
+  }
+
+  .seal{
+    display:flex;
+    justify-content:center;
+    margin-bottom: 22px;
+  }
+
+  .seal svg{
+    width: 46px;
+    height: 46px;
+    overflow: visible;
+  }
+
+  .seal path{
+    fill:none;
+    stroke: var(--rose);
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 140;
+    stroke-dashoffset: 140;
+    animation: draw 1.4s ease-out 0.2s forwards;
+  }
+
+  @keyframes draw{
+    to{ stroke-dashoffset: 0; }
+  }
+
+  .greeting-block{
+    text-align: center;
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease-out 1.5s forwards;
+  }
+
+  .hi-babe{
+    font-family: 'Parisienne', cursive;
+    font-size: 40px;
+    color: var(--rose);
+    line-height: 1.2;
+    margin: 0 0 6px;
+  }
+
+  .monthsary{
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 27px;
+    letter-spacing: 0.5px;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .divider{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap: 10px;
+    margin: 26px 0;
+    opacity: 0;
+    animation: fadeUp 0.9s ease-out 1.9s forwards;
+  }
+
+  .divider .line{
+    height: 1px;
+    width: 56px;
+    background: var(--rose-soft);
+  }
+
+  .divider .mark{
+    color: var(--rose);
+    font-size: 13px;
+    transform: translateY(-1px);
+  }
+
+  .body-text{
+    font-size: 18.5px;
+    line-height: 1.95;
+    color: var(--ink-soft);
+    text-align: center;
+    opacity: 0;
+    animation: fadeUp 1s ease-out 2.3s forwards;
+  }
+
+  .body-text .emphasis{
+    color: var(--rose);
+    font-style: italic;
+  }
+
+  .closing{
+    margin-top: 34px;
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--ink);
+    opacity: 0;
+    animation: fadeUp 0.9s ease-out 3s forwards;
+  }
+
+  .heart-row{
+    display:flex;
+    justify-content:center;
+    margin-top: 18px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease-out 3.3s forwards;
+  }
+
+  .heart-row svg{
+    width: 20px;
+    height: 20px;
+  }
+
+  .heart-row path{
+    fill: var(--rose);
+  }
+
+  @keyframes fadeUp{
+    from{ opacity:0; transform: translateY(10px); }
+    to{ opacity:1; transform: translateY(0); }
+  }
+
+  @media (max-width: 480px){
+    .letter{ padding: 48px 26px 40px; }
+    .hi-babe{ font-size: 34px; }
+    .monthsary{ font-size: 22px; }
+    .body-text{ font-size: 17px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .letter, .greeting-block, .divider, .body-text, .closing, .heart-row, .seal path{
+      animation: none !important;
+      opacity: 1 !important;
+      stroke-dashoffset: 0 !important;
+      transform: none !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <div class="envelope">
+    <div class="letter">
+
+      <div class="seal">
+        <svg viewBox="0 0 46 46">
+          <path d="M23 34C13 27 6 20 6 13.5C6 8.8 9.8 5 14.5 5C18 5 21 7 23 10C25 7 28 5 31.5 5C36.2 5 40 8.8 40 13.5C40 20 33 27 23 34Z"/>
+        </svg>
+      </div>
+
+      <div class="greeting-block">
+        <p class="hi-babe">Hi my Babyyy!!!</p>
+        <p class="monthsary">Happy Monthsaryyy!!!</p>
+      </div>
+
+      <div class="divider">
+        <span class="line"></span>
+        <span class="mark">❀</span>
+        <span class="line"></span>
+      </div>
+
+      <p class="body-text">
+        Thank you for being with me, thank you for everything
+        that you're sacrificing for me, <span class="emphasis">I love you so much Babiii!</span>
+        I'm sorry for making you angry all the time 🥲 I promise I'll be good to you,
+        I promise I'll follow what you want everytime, and I promise I'll marry you and I'll make
+        more money so that I can give what you want, because you deserve it,
+        <br/>
+        <span class="emphasis"> I Love You!!!</span>
+      </p>
+
+      <p class="closing">Forever yours,</p>
+      <p class="closing">Babi</p>
+      <div class="heart-row">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 21C12 21 3 14.6 3 8.6C3 5.5 5.4 3.2 8.3 3.2C10 3.2 11.3 4 12 5.3C12.7 4 14 3.2 15.7 3.2C18.6 3.2 21 5.5 21 8.6C21 14.6 12 21 12 21Z"/>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
